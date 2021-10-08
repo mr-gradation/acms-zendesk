@@ -1,0 +1,165 @@
+<h2 class="acms-admin-admin-title2"><!-- T -->Zendesk 設定<!-- /T -->
+	<span class="acms-admin-form-checkbox" style="margin-left:10px;font-weight: normal;">
+		<input type="checkbox" name="zendesk_enable" value="true" {zendesk_enable:checked#true} id="input-checkbox-zendesk_enable-true" class="js-form2entry-check">
+		<label for="input-checkbox-zendesk_enable-true">
+		<i class="acms-admin-ico-checkbox"></i>有効にする</label>
+	</span>
+	<input type="hidden" name="mail[]" value="zendesk_enable">
+</h2>
+
+<div class="acms-admin-tabs">
+	<ul class="js-acms_tabs">
+		<li><a href="#zendesk_basic" class="js-acms_tab js-acms_tab-active">基本設定</a></li>
+		<li><a href="#zendesk_fields" class="js-acms_tab">フィールド設定</a></li>
+		<li><a href="#zendesk_custom_fields" class="js-acms_tab">カスタムフィールド設定</a></li>
+		<li><a href="#zendesk_brand" class="js-acms_tab">ブランド設定</a></li>
+	</ul>
+	<div class="acms-admin-tabs-panel" id="zendesk_basic">
+		<table class="acms-admin-table-admin-edit">
+			<tr>
+				<th>サブドメイン</th>
+				<td>
+					<input type="text" name="zendesk_subdomain" value="{zendesk_subdomain}" class="acms-admin-form-width-full" />
+					<input type="hidden" name="mail[]" value="zendesk_subdomain" />
+				</td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td>
+					<input type="text" name="zendesk_username" value="{zendesk_username}" class="acms-admin-form-width-full" />
+					<input type="hidden" name="mail[]" value="zendesk_username" />
+				</td>
+			</tr>
+			<tr>
+				<th>APIトークン</th>
+				<td>
+					<input type="text" name="zendesk_token" value="{zendesk_token}" class="acms-admin-form-width-full" />
+					<input type="hidden" name="mail[]" value="zendesk_token" />
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="acms-admin-tabs-panel" id="zendesk_fields">
+		<table class="acms-admin-table-admin-edit">
+			<tr>
+				<th>件名</th>
+				<td>
+					<input type="text" name="zendesk_subject" value="{zendesk_subject}" class="acms-admin-form-width-full" placeholder="\{subject\}" />
+					<input type="hidden" name="mail[]" value="zendesk_subject" />
+				</td>
+			</tr>
+			<tr>
+				<th>本文</th>
+				<td>
+					<input type="text" name="zendesk_body" value="{zendesk_body}" class="acms-admin-form-width-full" placeholder="\{inquiry\}[raw]" />
+					<input type="hidden" name="mail[]" value="zendesk_body" />
+				</td>
+			</tr>
+			<tr>
+				<th>送信者名</th>
+				<td>
+					<input type="text" name="zendesk_requester_name" value="{zendesk_requester_name}" class="acms-admin-form-width-full" placeholder="\{name1\}[delnl] \{name2\}[delnl]" />
+					<input type="hidden" name="mail[]" value="zendesk_requester_name" />
+				</td>
+			</tr>
+			<tr>
+				<th>送信者メールアドレス</th>
+				<td>
+					<input type="text" name="zendesk_requester_email" value="{zendesk_requester_email}" class="acms-admin-form-width-full" placeholder="\{email\}[raw]" />
+					<input type="hidden" name="mail[]" value="zendesk_requester_email" />
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="acms-admin-tabs-panel" id="zendesk_custom_fields">
+		<table class="js-fieldgroup-sortable adminTable acms-admin-table-admin-edit">
+			<thead class="acms-admin-hide-sp">
+				<tr>
+					<th class="acms-admin-table-left acms-admin-admin-config-table-item-handle"> </th>
+					<th class="acms-admin-table-left">フィールドID</th>
+					<th class="acms-admin-table-left">送信する値（テンプレート使用可）</th>
+					<th class="acms-admin-table-left acms-admin-admin-config-table-action">削除</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- BEGIN zendesk_custom_fields:loop -->
+				<tr class="sortable-item">
+					<td class="item-handle acms-admin-table-nowrap">
+						<i class="acms-admin-icon-sort"></i>
+					</td>
+					<td>
+						<input type="text" name="zendesk_custom_fields_id[]" value="{zendesk_custom_fields_id}" class="acms-admin-form-width-full" />
+					</td>
+					<td>
+						<input type="text" name="zendesk_custom_fields_value[]" value="{zendesk_custom_fields_value}" class="acms-admin-form-width-full" />
+					</td>
+					<td class="acms-admin-table-nowrap">
+						<input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+					</td>
+				</tr>
+				<!-- END zendesk_custom_fields:loop -->
+				<tr class="sortable-item item-template">
+					<td class="item-handle acms-admin-table-nowrap">
+						<i class="acms-admin-icon-sort"></i>
+					</td>
+					<td>
+						<input type="text" name="zendesk_custom_fields_id[]" value="" class="acms-admin-form-width-full" />
+					</td>
+					<td>
+						<input type="text" name="zendesk_custom_fields_value[]" value="" class="acms-admin-form-width-full" />
+					</td>
+					<td class="acms-admin-table-nowrap">
+						<input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colSpan="4">
+						<input type="button" class="item-insert acms-admin-btn-admin" value="追加" />
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		<input type="hidden" name="@zendesk_custom_fields[]" value="zendesk_custom_fields_id" />
+		<input type="hidden" name="mail[]" value="zendesk_custom_fields_id" />
+		<input type="hidden" name="@zendesk_custom_fields[]" value="zendesk_custom_fields_value" />
+		<input type="hidden" name="mail[]" value="zendesk_custom_fields_value" />
+		<input type="hidden" name="mail[]" value="@zendesk_custom_fields" />
+	</div>
+	<div class="acms-admin-tabs-panel" id="zendesk_brand">
+		<table class="acms-admin-table-admin-edit">
+			<tr>
+				<th>ブランド</th>
+				<td>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="zendesk_brand_enable[]" value="true" {zendesk_brand_enable:checked#true} id="input-checkbox-zendesk_brand_enable-true" />
+						<label for="input-checkbox-zendesk_brand_enable-true">
+							<i class="acms-admin-ico-checkbox"></i>使用する</label>
+					</div>
+					<input type="hidden" name="mail[]" value="zendesk_brand_enable" />
+				</td>
+			</tr>
+			<tr>
+				<th>ブランドがあればメールを送信しない</th>
+				<td>
+					<div class="acms-admin-form-checkbox">
+						<input type="checkbox" name="zendesk_brand_mail_disable[]" value="true" {zendesk_brand_mail_disable:checked#true} id="input-checkbox-zendesk_brand_mail_disable-true" />
+						<label for="input-checkbox-zendesk_brand_mail_disable-true">
+							<i class="acms-admin-ico-checkbox"></i>使用する</label>
+					</div>
+					<input type="hidden" name="mail[]" value="zendesk_brand_mail_disable" />
+				</td>
+			</tr>
+			<tr>
+				<th>ブランドの送信先（テンプレート使用可）</th>
+				<td>
+					<input type="text" name="zendesk_brand_id" value="{zendesk_brand_id}" class="acms-admin-form-width-full" />
+					<input type="hidden" name="mail[]" value="zendesk_brand_id" />
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+

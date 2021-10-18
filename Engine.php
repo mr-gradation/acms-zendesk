@@ -82,6 +82,9 @@ class Engine
             $brand_id = build(setGlobalVars($brand_id), Field_Validation::singleton('post'));
             if ($brand_id) {
                 $ticket["brand_id"] = $brand_id;
+            } else {
+                // ブランドを使用する場合で、ブランドの指定がない場合は、Zendeskに送信しない
+                return;
             }
         }
 
